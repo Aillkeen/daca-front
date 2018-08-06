@@ -1,1 +1,1 @@
-export const TIRA_DUVIDA_URL: string = 'https://tiraduvida-beckend.herokuapp.com/';
+export const TIRA_DUVIDA_URL: string = 'https://tiraduvida-beckend.herokuapp.com';
