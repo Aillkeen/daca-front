@@ -1,0 +1,104 @@
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+  </div>
+  <div class="row">
+  <div class="col-md-10">
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Duvidas</h3>
+    </div>
+    <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+    </div>
+    <div class="box-body">
+        <div class="form-group" *ngIf="shared.user.papel == 'TUTOR'">
+            <div class="checkbox">
+                <label>
+                  <input type="checkbox" 
+                        name="assignedToMe"
+                        id="assignedToMe"
+                        [(ngModel)]="assignedToMe">
+                        <b>Aceitas</b>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="inputNumber" class="col-sm-2 control-label">Codigo</label>
+          <div class="col-sm-10">
+            <input type="text" 
+                    [(ngModel)]="duvidaFilter.codigo"
+                    name="number" 
+                    class="form-control" 
+                    id="inputNumber">
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="inputTitle" class="col-sm-2 control-label">Titulo</label>
+            <div class="col-sm-10">
+              <input type="text" 
+                      [(ngModel)]="duvidaFilter.titulo"
+                      name="title" 
+                      class="form-control" 
+                      id="inputTitle">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-10">
+              <select [(ngModel)]="duvidaFilter.status" 
+                  class="form-control select2" 
+                  name="status"
+                  id="inputStatus"
+                  style="width: 100%;">
+                  <option>ABERTO</option>
+                  <option>ACEITO</option>
+                  <option>FINALIZADO</option>
+                  <option>APROVADO</option>
+                  <option>MODERADO</option>
+                  <option>RUIM</option>
+                </select>
+            </div>
+        </div>
+    </div>    
+    <div class="box-footer">
+        <button class="btn btn-info pull-left" (click)="cleanFilter()">Limpar filtro</button>
+        <button style="margin-left: 10px" class="btn btn-info pull-right" (click)="filter()">Filtrar</button>
+    </div>
+    <div class="box-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>Código</th>
+          <th>Título</th>
+          <th>Status</th>
+          <th>Criador</th>
+          <th style="width: 10px" *ngIf="shared.user.papel == 'ALUNO'">&nbsp;</th>
+          <th style="width: 10px" *ngIf="shared.user.papel == 'ALUNO'">&nbsp;</th>
+          <th style="width: 10px">&nbsp;</th>
+        </tr>
+        <tr *ngFor="let duvida of listDuvida">
+          <td>{{duvida.codigo}}</td>
+          <td>{{duvida.titulo}}</td>
+          <td>{{duvida.status}}</td>
+          <td>{{duvida.usuario.email}}</td>
+          <td *ngIf="shared.user.papel == 'ALUNO'">
+              <button class="btn btn-primary" (click)="edit(duvida.id)">Editar</button>
+          </td>
+          <td *ngIf="shared.user.papel == 'ALUNO'">
+              <button class="btn btn-danger" (click)="delete(duvida.id)">Deletar</button>
+          </td>
+          <td><button class="btn btn-success" (click)="detail(duvida.id)">Detalhes</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="box-footer clearfix">
+      <ul class="pagination pagination-sm no-margin pull-right">
+        <li><a href="" (click)="setPreviousPage($event)">&laquo;</a></li>
+        <li *ngFor="let p of pages; let i=index">
+            <a [ngClass]="{'pagination-focus':i==page}"  href="" (click)="setPage(i,$event)">{{i+1}}</a>
+        </li>
+        <li><a href="" (click)="setNextPage($event)">&raquo;</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  </div>

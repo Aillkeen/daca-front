@@ -1,0 +1,41 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="treeview" *ngIf="shared.user.papel == 'PROFESSOR'">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Usuarios</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/usuario-list']"><i class="fa fa-circle-o"></i> Lista</a></li>
+          <li><a [routerLink]="['/usuario-new']"><i class="fa fa-circle-o"></i> Novo usuario</a></li>
+        </ul>
+      </li>
+      <li class="treeview" *ngIf="shared.user.papel != 'PROFESSOR'">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Assistencia</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/duvida-list']"><i class="fa fa-circle-o"></i> Duvidas</a></li>
+          <li *ngIf="shared.user.papel == 'ALUNO'"><a [routerLink]="['/duvida-new']"><i class="fa fa-circle-o"></i> Nova duvida</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Resumo</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a [routerLink]="['/resumo']"><i class="fa fa-circle-o"></i>To view </a></li>
+          </ul>
+      </li>
+    </ul>
+  </section>
+</aside>

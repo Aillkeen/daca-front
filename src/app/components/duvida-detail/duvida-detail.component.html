@@ -1,0 +1,81 @@
+<div class="col-md-10" style="margin-left:0%">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Detalhes</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+      <div class="box-body">
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Titulo :</b>
+            <span>{{duvida.titulo}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Código :</b>
+            <span>{{duvida.codigo}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Criada por :</b>
+            <span>{{duvida?.usuario?.email}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Status :</b>
+            <span>{{duvida.status}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Aceita por :</b>
+            <span>{{duvida?.tutor?.email}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Data :</b>
+            <span>{{duvida.data | date:'dd/MM/yyyy'}}</span>
+          </li>
+          <li class="list-group-item">
+            <b>Descrição :</b>
+            <span>{{duvida.descricao}}</span>
+          </li>
+          <span class="pull-right">
+              <table class="table table-bordered">
+                  <tr>
+                    <th>Usuário</th> 
+                    <th>Data de alteração</th>
+                    <th>Status</th>
+                  </tr>
+                  <tr *ngFor="let historico of duvida.historicos">
+                      <td>{{ historico?.usuario.email}}</td>
+                      <td>{{ historico?.data | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                      <td>{{ historico?.status }}</td>
+                  </tr>  
+                     
+              </table>    
+            </span>
+        </ul>
+      </div>
+      <div class="box-footer">
+          <ul class="list-group list-group-unbordered" *ngIf="shared.user.papel == 'ALUNO' && duvida.status == 'FINALIZADO'">
+              <li class="list-group-item">
+                  <b>ATRIBUIR NOTA</b>
+                </li>
+          </ul>
+          <button *ngIf="shared.user.papel == 'TUTOR' && duvida.status == 'ABERTO'"
+                  (click)="changeStatus('ACEITO')" 
+                  class="btn btn-primary">ACEITAR</button>
+          <button *ngIf="shared.user.papel == 'TUTOR' && (duvida.status == 'ACEITO' || duvida.status == 'Disapproved')" 
+                  (click)="changeStatus('FINALIZADO')" 
+                  class="btn btn-primary">FINALIZAR</button>
+          <button *ngIf="shared.user.papel == 'ALUNO' && duvida.status == 'FINALIZADO'" 
+                  (click)="changeStatus('APROVADO')" 
+                  class="btn btn-primary">APROVADO</button>
+          <button *ngIf="shared.user.papel == 'ALUNO' && duvida.status == 'FINALIZADO'" 
+                  (click)="changeStatus('MODERADO')" 
+                  class="btn btn-primary">MODERADO</button>
+          <button *ngIf="shared.user.papel == 'ALUNO' && duvida.status == 'FINALIZADO'"
+                  (click)="changeStatus('RUIM')" 
+                  class="btn btn-primary">RUIM</button>
+        </div>
+    </form>
+  </div>
+</div>
