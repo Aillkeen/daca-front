@@ -1,1 +1,1 @@
-export const TIRA_DUVIDA_URL: string = 'http://localhost:8080';
+export const TIRA_DUVIDA_URL: string = 'https://tiraduvida-beckend.herokuapp.com/';
