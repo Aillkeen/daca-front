@@ -60,8 +60,7 @@ export class DuvidaDetailComponent implements OnInit {
         this.form.resetForm();
         this.showMessage({
           type: 'success',
-          text: `A duvida ${duvida
-        .titulo} foi registrada`
+          text: `Dúvida registrada com sucesso!`
         });
     } , err => {
       this.showMessage({

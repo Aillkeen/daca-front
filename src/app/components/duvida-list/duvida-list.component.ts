@@ -83,14 +83,14 @@ export class DuvidaListComponent implements OnInit {
   }
 
   delete(id:string){
-    this.dialogService.confirm('Deseja deletar a duvida ?')
+    this.dialogService.confirm('Deseja deletar a dúvida ?')
       .then((candelete:boolean) => {
           if(candelete){
             this.message = {};
             this.duvidaService.delete(id).subscribe((response:Response) => {
                 this.showMessage({
                   type: 'success',
-                  text: `Duvida deletada`
+                  text: `Dúvida deletada`
                 });
                 this.findAll(this.page,this.count);
             } , err => {

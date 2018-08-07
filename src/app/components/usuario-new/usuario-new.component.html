@@ -1,7 +1,7 @@
 <div class="col-md-6" style="margin-left:0%">
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title">New User</h3>
+    <h3 class="box-title">Novo usuário</h3>
   </div>
   <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
     <div [ngClass]="classCss" role="alert" *ngIf="message">
@@ -19,11 +19,11 @@
                   #email="ngModel"
                   placeholder="Email"
                   email>
-          <span class="help-block" *ngIf="email.invalid  && email.dirty">Email is invalid </span>
+          <span class="help-block" *ngIf="email.invalid  && email.dirty">Email inválido</span>
         </div>
       </div>
       <div [ngClass]="getFormGroupClass(password.invalid,password.dirty)">
-        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+        <label for="inputPassword" class="col-sm-2 control-label">Senha</label>
         <div class="col-sm-10">
           <input type="password" 
                   [(ngModel)]="user.password"
@@ -33,11 +33,11 @@
                   placeholder="Password"
                   #password="ngModel" 
                   required>
-          <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
+          <span class="help-block" *ngIf="password.invalid && password.dirty">A senha é obrigatória</span>
         </div>
       </div>
       <div [ngClass]="getFormGroupClass(profile.invalid,profile.dirty)">
-        <label for="inputProfile" class="col-sm-2 control-label">Profile</label>
+        <label for="inputProfile" class="col-sm-2 control-label">Papel</label>
         <div class="col-sm-10">
           <select [(ngModel)]="user.papel" 
               class="form-control select2" 
@@ -50,12 +50,12 @@
               <option>ROLE_ALUNO</option>
               <option>ROLE_TUTOR</option>
             </select>
-          <span class="help-block" *ngIf="profile.invalid && profile.dirty">Profile is required</span>
+          <span class="help-block" *ngIf="profile.invalid && profile.dirty">O papel é obrigatório</span>
         </div>
       </div>
     </div>
     <div class="box-footer">
-      <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
     </div>
   </form>
 </div>

@@ -16,30 +16,30 @@
                     name="title" 
                     class="form-control" 
                     id="inputTitle" 
-                    placeholder="Title"
+                    placeholder="Título"
                     #title="ngModel" 
                     required>
-            <span class="help-block" *ngIf="title.invalid && title.dirty">Title is required</span>
+            <span class="help-block" *ngIf="title.invalid && title.dirty">O título é obrigatório</span>
           </div>
         </div>
         <div [ngClass]="getFormGroupClass(description.invalid,description.dirty)">
-          <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+          <label for="inputDescription" class="col-sm-2 control-label">Descrição</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="duvida.descricao"
                     name="descricao" 
                     rows="3"
                     class="form-control" 
                     id="inputDescription" 
-                    placeholder="Description..."
+                    placeholder="Descrição..."
                     #description="ngModel" 
                     required>
             </textarea>        
-            <span class="help-block" *ngIf="description.invalid && description.dirty">Description is required</span>
+            <span class="help-block" *ngIf="description.invalid && description.dirty">A descrição é obrigatória</span>
           </div>
         </div>       
       </div>
       <div class="box-footer">
-        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
       </div>
     </form>
   </div>

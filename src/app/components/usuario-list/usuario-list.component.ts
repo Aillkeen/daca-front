@@ -50,14 +50,14 @@ export class UsuarioListComponent implements OnInit {
   }
 
   delete(id:string){
-    this.dialogService.confirm('Do you want to delete the email ?')
+    this.dialogService.confirm('Você deseja delelar o usuário?')
       .then((candelete:boolean) => {
           if(candelete){
             this.message = {};
             this.userService.delete(id).subscribe((response:Response) => {
                 this.showMessage({
                   type: 'success',
-                  text: `Record deleted`
+                  text: `Usuário deletado com sucesso!`
                 });
                 this.findAll(this.page,this.count);
             } , err => {

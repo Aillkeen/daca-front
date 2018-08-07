@@ -54,7 +54,7 @@ export class UsuarioNewComponent implements OnInit {
         this.form.resetForm();
         this.showMessage({
           type: 'success',
-          text: `Registered ${userRet.email} successfully`
+          text: `Uusário salvo com sucesso!`
         });
     } , err => {
       this.showMessage({

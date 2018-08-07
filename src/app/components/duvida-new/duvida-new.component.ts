@@ -53,7 +53,7 @@ export class DuvidaNewComponent implements OnInit {
         this.form.resetForm();
         this.showMessage({
           type: 'success',
-          text: `Registered ${duvida.titulo} successfully`
+          text: `Dúvida salva com sucesso!`
         });
     } , err => {
       this.showMessage({
