@@ -1,4 +1,5 @@
-<form class="form-horizontal" #form="ngForm" (ngSubmit)="login()" novalidate>
+<div>
+  <form class="form-horizontal" #form="ngForm" (ngSubmit)="login()" novalidate>
     <div class="alert alert-error" role="alert" *ngIf="message">
       <strong>Email ou senha inválido</strong>
     </div>
@@ -21,6 +22,8 @@
       </div>
     </div>
     <div class="box-footer">
-      <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Login</button>
+      <button type="submit" *ngIf="!showSpinner" [disabled]="!form.valid" class="btn btn-info pull-right">Login</button>
+      <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
     </div>
   </form>
+</div>

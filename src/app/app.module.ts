@@ -24,6 +24,7 @@ import { DuvidaListComponent } from './components/duvida-list/duvida-list.compon
 import { DuvidaService } from './services/duvida/duvida.service';
 import { DuvidaDetailComponent } from './components/duvida-detail/duvida-detail.component';
 import { ResumoComponent } from './components/resumo/resumo.component';
+import { LoadingSpinnerComponent } from './components/ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ResumoComponent } from './components/resumo/resumo.component';
     DuvidaListComponent,
     DuvidaDetailComponent,
     ResumoComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
