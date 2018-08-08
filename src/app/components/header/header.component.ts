@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   signOut() : void {
     this.shared.token = null;
     this.shared.user = null;
-    window.location.href = '/login';
+    window.location.href = '/';
     window.location.reload();
   }
 }
